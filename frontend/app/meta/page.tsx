@@ -97,13 +97,15 @@ export default function Meta() {
               </div>
             )}
 
-            {session?.data && session?.data?.user?.email !== null ? (
+           
+          </div>
+        )}
+
+{session?.data && session?.data?.user?.email !== null ? (
               <SignOut />
             ) : (
               <SignIn />
             )}
-          </div>
-        )}
       </section>
     </>
   );
