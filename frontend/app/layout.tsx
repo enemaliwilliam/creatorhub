@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import Link from "next/link";
 import styles from "@/app/page.module.css";
 import { cookies } from "next/headers";
+import { SessionProvider } from "next-auth/react"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/users", label: "User List" },
+  { href: "/meta", label: "Meta Demo" },
 ];
 
 export default function RootLayout({
@@ -35,22 +36,11 @@ export default function RootLayout({
                 </Link>
               ))}
             </div>
-
-            {isLoggedIn ? (
-              <form action="/auth/logout" method="post">
-                <button type="submit">Logout</button>
-              </form>
-            ) : (
-              <form action="/auth/login" method="post">
-                <input type="text" placeholder="Email" name="email" />
-                <input type="password" placeholder="Password" name="password" />
-                <button type="submit">Login</button>
-              </form>
-            )}
           </nav>
         </header>
-
-        <main className={styles.main}>{children}</main>
+        <SessionProvider>
+          <main className={styles.main}>{children}</main>
+        </SessionProvider>
       </body>
     </html>
   );
