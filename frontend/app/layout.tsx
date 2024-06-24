@@ -9,7 +9,7 @@ import { SessionProvider } from "next-auth/react"
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Encore + Next.js",
+  title: "CreatorHub",
 };
 
 const navLinks = [
@@ -22,7 +22,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const isLoggedIn = cookies().has("auth-token");
 
   return (
     <html lang="en">
@@ -41,6 +40,7 @@ export default function RootLayout({
         <SessionProvider>
           <main className={styles.main}>{children}</main>
         </SessionProvider>
+        <script defer data-domain="creatorhub.iamwille.com" src="https://plausible.io/js/script.js"></script>
       </body>
     </html>
   );

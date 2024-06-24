@@ -96,16 +96,14 @@ export default function Meta() {
                 <p>{userProfile}</p>
               </div>
             )}
-
-           
           </div>
         )}
 
-{session?.data && session?.data?.user?.email !== null ? (
-              <SignOut />
-            ) : (
-              <SignIn />
-            )}
+        {session?.data && session?.data?.user?.email !== null ? (
+          <SignOut />
+        ) : (
+          <SignIn />
+        )}
       </section>
     </>
   );
